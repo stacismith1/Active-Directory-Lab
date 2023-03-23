@@ -8,12 +8,13 @@ This lab was performed to practice and review the key steps to deploy an Active 
 - Beginning with a Windows Server 2019 VM build, install and configure the Domain Controller Role and DNS Server role. (For larger environments it is key to replicate these roles across multiple servers in your AD domain for fail-over management, 1 will suffice.) 
 -> It is also possible to handle routing, NAT and DHCP on the same server as the domain controller, however this is not recommended to avoid Single Points of failure and increasing the attack surface for our critical network services.    
 
-**Image**
+![Diagram of Network layout for lab](https://github.com/stacismith1/Active-Directory-Lab/blob/main/AD%20LAB%20diagram.png)
 
 > Diagram Includes 1 Primary DC on Server2019, 2x WIN10PC clients, 1K auto-generated domain users, a Pfsense Firewall managing NAT, Routing & DHCP. 
 
 - After Installing and configuring the DC, the router is installed and configured to enable the devices on the network to communicate. Suricata for IPS and VLAN segmentation was also added to the Pfsense machine for testing, however for the scope of this basic lab, this is not really necessary.
 
+![Screenshot of Pfsense Router GUI as configured for lab](https://github.com/stacismith1/Active-Directory-Lab/blob/main/VirtualBox_Router.png)
 - Next a pair of Windows 10 VMs are installed on the network and joined to the domain.
 
 - To efficiently add users to the the domain its possible to leverage the power of custom scripts to do so in batch. PowerShell Script is used for just that purpose as well as to randomly generate names to be used for this process. The code used generates 1000 users and enters each into the domain, far faster than could be done manually.
